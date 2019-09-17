@@ -27,5 +27,5 @@ This was written for and tested with repositories with JSON config files
 - vscode-translator/package.json=.contributes.configuration.properties."translation.apiKey".default
 
 ## Todo
--[ ] add test mode
--[ ] run in powershell
+[ ] add test mode
+[ ] run in powershell
