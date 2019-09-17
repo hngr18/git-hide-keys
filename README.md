@@ -3,6 +3,8 @@ Hide sensitive API keys and secrets without having to add them to environment va
 
 This was written for and tested with repositories with JSON config files
 
+It can be thought of as a wrapper to 'git push' that safely removes and restores sensitive values from JSON files
+
 ## How it works
 - Ensure you have jq library installed
 - Clone this repository
@@ -12,8 +14,8 @@ This was written for and tested with repositories with JSON config files
 (i) When you have added a JSON file with a sensitive value, add an entry to the .hide file
 
 - Commit as you normally would
-- Execute git hide-keys
-- hide-keys will
+- Execute 'git hide-keys'
+- git-hide-keys will
   - remove the sensitive keys
   - update the last commit
   - append to the last commit message the number of keys hidden
