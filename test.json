@@ -1,0 +1,16 @@
+{
+	"name": "Test Config File",
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Example configuration",
+			"properties": {
+				"configKey": {
+					"scope": "resource",
+					"type": "string",
+					"default": "x<HIDE-THIS-VALUE>"
+				}
+			}
+		}
+	}
+}

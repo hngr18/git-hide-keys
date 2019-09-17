@@ -1,0 +1,30 @@
+#!/bin/bash
+# Usage: git hide-keys
+
+keys=()
+for line in $(cat .hide);
+do
+    filePath=${line%=*}
+    jqPattern=${line:$(expr match "$line" ".*=")}
+
+    keyToHide=$(cat $filePath | jq $jqPattern | xargs)
+    keys+=($keyToHide)
+
+    sed -i "s/$keyToHide/hidden${#keys[*]}/g" $filePath
+done
+
+git add .
+git commit --amend -m "$(git log -1 --pretty=%B) ($keyCount keys .hidden)"
+git push
+
+keyIndex=0
+keyNumber=1
+for line in $(cat .hide);
+do
+    filePath=${line%=*}
+
+    sed -i "s/hidden$keyNumber/${keys[$keyIndex]}/g" $filePath
+
+    ((keyIndex++))
+    ((keyNumber++))
+done
